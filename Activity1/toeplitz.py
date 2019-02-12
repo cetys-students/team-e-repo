@@ -34,6 +34,12 @@
 # matrix[i][j] will be integers in range [0, 99].
 
 class Solution:
-        def isToeplitzMatrix(self, matrix: 'List[List[int]]') -> 'bool':
-                  pass
-
+    def isToeplitzMatrix(self, matrix: 'List[List[int]]') -> 'bool':
+        for x in range(0, len(matrix)):
+            for y in range(0, len(matrix[x])):
+                if (x - 1 >= 0) and (y - 1 >= 0):
+                    if matrix[x][y] != matrix[x-1][y-1]:
+                        return False
+                pass
+            pass
+        return True
