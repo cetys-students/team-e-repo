@@ -29,4 +29,17 @@
 
 class Solution:
         def fib(self, N: 'int') -> 'int':
-                  pass
+                Fib1 = 0
+                Fib2 = 1
+                for loop_number in range(N-2):
+                        Fib = Fib1 + Fib2
+                        Fib1 = Fib2
+                        Fib2 = Fib  
+                return Fib
+                pass
+
+var = Solution()
+user_input = input("Enter N: ")
+n = int(user_input)
+result = var.fib(n)
+print(result)
