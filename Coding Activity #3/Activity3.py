@@ -5,7 +5,7 @@ def definite_integral(samples, lower_limit, upper_limit, sampling_period):
         return 0.0
     else:
         area = 0.5 * (samples[lower_limit] + samples[upper_limit])
-        i = lower_limit
+        i = lower_limit + 1
         while i < upper_limit:
             area = area + samples[i]
             i += 1
