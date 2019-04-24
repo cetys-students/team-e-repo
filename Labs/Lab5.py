@@ -33,9 +33,9 @@ GPIO.setup(C3, GPIO.IN)
 GPIO.setup(C4, GPIO.IN)
 
 # GPIO 19 as PWM with 1000HZ frequency
-p = GPIO.PWM(18, 100)
+motor_pwm = GPIO.PWM(18, 100)
 # Generate PWM signal with 0% duty cycle
-p.start(0)
+motor_pwm.start(0)
 
 
 def read_matrix():
@@ -120,7 +120,7 @@ while 1:
     analog_value = read_adc()
     if (analog_value > 110) and (analog_value < 150):
         count_flag = True
-    p.start(pwm)
+    motor_pwm.start(pwm)
     if ((analog_value < 110) or (analog_value > 150)) and count_flag:
         spin_count = spin_count + 1
         count_flag = False
