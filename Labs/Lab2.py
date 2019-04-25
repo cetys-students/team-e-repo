@@ -3,8 +3,6 @@ import time
 
 # GPIO configuration
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(2, GPIO.IN)
-GPIO.setup(3, GPIO.IN)
 GPIO.setup(4, GPIO.IN)
 GPIO.setup(17, GPIO.IN)
 GPIO.setup(27, GPIO.IN)
