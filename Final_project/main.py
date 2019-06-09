@@ -63,7 +63,7 @@ while True:
                 cont = cont + 1
                 print("Calibration finished")
             
-            cal = altimu.get_accelerometer_cal()
+            cal_accel = altimu.get_accelerometer_cal()
             
             cal_gyro = altimu.get_gyroscope_cal()
             sample_1 = cal_gyro[2] - bias
@@ -73,12 +73,8 @@ while True:
             time.sleep(sampling_period)
             
             angle = angle + (sample_1 + sample_2)*sampling_period 
-            
-            textx = str("%.3f" % cal[0])
-            texty = str("%.3f" % cal[1])
-            textz = str("%.3f" % cal[2])
 
-            if cal[1] > 0.6:
+            if cal_accel[1] > 0.6:
                 GPIO.output(motor1_pin2,0)
                 GPIO.output(motor1_pin1,1)
                 GPIO.output(motor2_pin2,0)
@@ -87,7 +83,7 @@ while True:
                 GPIO.output(motor3_pin1,0)
                 GPIO.output(motor4_pin2,0)
                 GPIO.output(motor4_pin1,0)
-            elif cal[1] < -0.6:
+            elif cal_accel[1] < -0.6:
                 GPIO.output(motor1_pin1,0)
                 GPIO.output(motor1_pin2,1)
                 GPIO.output(motor2_pin2,0)
@@ -96,7 +92,7 @@ while True:
                 GPIO.output(motor3_pin1,0)
                 GPIO.output(motor4_pin2,0)
                 GPIO.output(motor4_pin1,0)
-            elif cal[0] > 0.6:
+            elif cal_accel[0] > 0.6:
                 GPIO.output(motor2_pin2,0)
                 GPIO.output(motor2_pin1,1)
                 GPIO.output(motor1_pin2,0)
@@ -105,7 +101,7 @@ while True:
                 GPIO.output(motor3_pin1,0)
                 GPIO.output(motor4_pin2,0)
                 GPIO.output(motor4_pin1,0)
-            elif cal[0] < -0.6:
+            elif cal_accel[0] < -0.6:
                 GPIO.output(motor2_pin1,0)
                 GPIO.output(motor2_pin2,1)
                 GPIO.output(motor1_pin2,0)
